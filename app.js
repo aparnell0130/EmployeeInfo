@@ -12,6 +12,7 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 const render = require("./lib/htmlRenderer");
 
 const employeeList = []
+
 // manager
 const managerInfo = () => {
     // console.log(employeeQuestions[0])
@@ -26,33 +27,53 @@ const managerInfo = () => {
 const engineerInfo = () => {
     return inquirer.prompt(employeeQuestions[1].engineerQuestions).then((engineerData) => {
         console.log(engineerData)
-        const newEngineer = new Engineer(engineerData.managerName, engineerData.id, engineerData.email, engineerData.github)
+        const newEngineer = new Engineer(engineerData.engineersName, engineerData.id, engineerData.email, engineerData.github)
         employeeList.push(newEngineer)
         // console.log(employeeList)
         askType()
     })
 }
+
+const internInfo = () => {
+    return inquirer.prompt(employeeQuestions[2].internQuestions).then((internData) => {
+        console.log(internData)
+        const newIntern = new Intern(internData.internsName, internData.id, internData.email, internData.school)
+        employeeList.push(newIntern)
+        console.log(newIntern)
+        askType()
+    })
+}
 // next employee type
 const askType = () => {
+    console.log(employeeList)
     return inquirer.prompt(employeeQuestions[3].typeQuestions).then((empType) => {
         if (empType.type === 'Engineer') {
             engineerInfo()
         }
-        // else if (type) {
-
-        // }
-        // else {
-
-        // }
+        else if (empType.type === 'Intern') {
+            internInfo()
+        }
+        else {
+            createHtml()
+        }
     })
+
 }
 managerInfo()
 
 
 
-function create() {
+const createHtml = () => {
     const htmlContent = render(employeeList)
     // fs mod to write html
+    fs.writeFile(__dirname + '/main.html', htmlContent, (err) => {
+        // check for error
+        err ?
+            // if failed console log 
+            console.log('FAILED TO WRITE FILE') :
+            // if success console log
+            console.log('THE FILE HAS BEEN WRITTEN')
+    })
 }
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
