@@ -13,39 +13,45 @@ const render = require("./lib/htmlRenderer");
 
 const employeeList = []
 // manager
-function askManager() {
+const managerInfo = () => {
     // console.log(employeeQuestions[0])
     return inquirer.prompt(employeeQuestions[0].managerQuestions).then((managerData) => {
         console.log(managerData)
         const newManager = new Manager(managerData.managerName, managerData.id, managerData.email, managerData.officeNumber)
         employeeList.push(newManager)
         // console.log(employeeList)
-        // askType()
+        askType()
     })
 }
-
+const engineerInfo = () => {
+    return inquirer.prompt(employeeQuestions[1].engineerQuestions).then((engineerData) => {
+        console.log(engineerData)
+        const newEngineer = new Engineer(engineerData.managerName, engineerData.id, engineerData.email, engineerData.github)
+        employeeList.push(newEngineer)
+        // console.log(employeeList)
+        askType()
+    })
+}
 // next employee type
-// function askType() {
-//     return inquirer.prompt([
+const askType = () => {
+    return inquirer.prompt(employeeQuestions[3].typeQuestions).then((empType) => {
+        if (empType.type === 'Engineer') {
+            engineerInfo()
+        }
+        // else if (type) {
 
-//     ]).then((response) => {
-//         if (type) {
+        // }
+        // else {
 
-//         }
-//         else if (type) {
-
-//         }
-//         else {
-
-//         }
-//     })
-// }
-askManager()
+        // }
+    })
+}
+managerInfo()
 
 
 
 function create() {
-    const htmlContent = render(list)
+    const htmlContent = render(employeeList)
     // fs mod to write html
 }
 // Write code to use inquirer to gather information about the development team members,
