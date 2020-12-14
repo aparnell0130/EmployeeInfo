@@ -54,12 +54,12 @@ const managerInfo = () => {
 
 ```
 ## Repo_Link
-- [ReadMe Gen Repo]()
+- [EmployeeInfo Repo](https://github.com/aparnell0130/EmployeeInfo)
 
 ## Example
-#### Click picture to run video. For best quality, run video in full screen.
+#### Click picture to play video. For best quality, play video in full screen.
 
-[![ALT TEXT](assets/demo.PNG)]()
+[![ALT TEXT](assets/demo.PNG)](https://drive.google.com/file/d/1k2BV6iYAJSn30piNQkrGYsRc-hoGfUZ3/view)
 
 ## License
 - MIT License
