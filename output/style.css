@@ -1,0 +1,26 @@
+body{
+    background-color: #333333;
+}
+.jumbotron{
+    background-color: lightgreen;
+}
+
+.card{
+    box-shadow: 10px 5px 5px gray;
+    width: 30%;
+    margin: 10px;
+    background-color: #555;
+}
+
+.card-header{
+    background-color: lightgreen;
+    text-align: center;
+}
+
+.team-area{
+    flex-wrap: wrap;
+}
+.list-group-item{
+    background-color: lightgreen;
+    border: solid;
+}
